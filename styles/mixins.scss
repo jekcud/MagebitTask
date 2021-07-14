@@ -1,0 +1,21 @@
+@mixin zero-margin-padding() {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin social-icon-basic($url) {
+  width: 42px;
+  height: 42px;
+  border: 2px solid $iron;
+  border-radius: 50%;
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin social-icon-hover-active($color, $url) {
+  border: 2px solid $color;
+  background-color: $color;
+  background-image: url($url);
+  box-shadow: $icon-shadow;
+}

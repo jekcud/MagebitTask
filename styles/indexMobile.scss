@@ -1,0 +1,275 @@
+@import "mixins";
+@import "variables";
+
+html {
+    background-image: url('../images/image_summer-1.png');
+    background-position: bottom center;
+    background-size: cover;
+}
+
+body {
+    @include zero-margin-padding;
+    height: 100vh;
+}
+
+.main {
+    height: 100vh;
+    @include zero-margin-padding;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    height: 66px;
+    background-color: $white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-image: url('../images/icons/logo_pineapple.svg');
+    background-repeat: no-repeat;
+    background-position: 20px 10px;
+    li{
+        list-style: none;
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: $grey-txt;
+    width: 206px;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    color: $grey-txt;
+}
+
+.page {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.content {
+    width: 335px;
+    height: 371px;
+    background: $light-gradient;
+}
+
+#contentSuccess {
+    display: none;
+    width: 335px;
+    height: 371px;
+    hr {
+        margin: 40px 20px 0 20px;
+    }
+    .icons{
+        margin: 20px 55px;
+        width: 215px;
+    }
+    #successIcon {
+        margin: 29px 20px;
+    }
+    #subscribe-success-1 {
+        font-family: Georgia, serif;
+        font-size: 18pt;
+        color: $vulcan;
+        margin: 9px 20px;
+    }
+    #subscribe-success-2 {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: $grey-txt;
+        line-height: 25px;
+        margin: 14px 20px;
+    }
+}
+
+#subscribe-txt-1 {
+    font-family: Georgia, serif;
+    font-size: 18pt;
+    color: $vulcan;
+    margin: 33px 20px 0;
+}
+
+#subscribe-txt-2 {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: $grey-txt;
+    margin: 13px 20px 0;
+    line-height: 26px;
+}
+
+#inputHolder {
+    @include zero-margin-padding;
+    position: relative;
+}
+
+input[type=text] {
+    width: 275px;
+    height: 58px;
+    margin: 21px 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: $grey-txt;
+    border: 1px solid $iron;
+    border-left: 4px solid $san-marino;
+    padding: 0 0 0 15px;
+    &:hover {
+        color: $grey-txt;
+        border: 1px solid $iron;
+        border-left: 4px solid $san-marino;
+        box-shadow: $input-shadow;
+    }
+    &:focus {
+        color: $vulcan;
+        border: 1px solid $san-marino;
+        border-left: 4px solid $san-marino;
+        box-shadow: $input-shadow;
+        outline: none;
+    }
+}
+
+button {
+    width: 24px;
+    height: 14px;
+    border: none;
+    color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    background-image: url("../images/icons/ic_arrow.svg");
+    position: absolute;
+    top: 42px;
+    right: 35px;
+    &:focus {
+        background-image: url("../images/icons/ic_arrow-2.svg");
+    }
+}
+
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkboxInput {
+    display: none;
+}
+
+.checkboxBox {
+    width: 24px;
+    height: 24px;
+    border: 1px solid $iron;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 10px 0 20px;
+    flex-shrink: 0;
+}
+
+.checkboxBox::after {
+    content: url("../images/icons/ic_checkmark.svg");
+    opacity: 0;
+}
+
+.checkboxInput:checked + .checkboxBox::after {
+    opacity: 100%;
+}
+
+.checkboxInput:checked + .checkboxBox {
+    border: 1px solid $san-marino;
+    background-color: $san-marino;
+    opacity: 100%;
+}
+
+.terms-of-service {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: $grey-txt;
+    margin: 23px 0 0 5px;
+    a{
+        text-decoration: underline;
+        color: $vulcan;
+        &:hover {
+            text-decoration: underline;
+            color: $san-marino;
+        }
+        &:active {
+            text-decoration: underline;
+            color: $cloud-burst;
+        }
+    }
+}
+
+#error {
+    color: red;
+    font-family: Arial, sans-serif;
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+#content hr {
+    margin: 21px;
+}
+
+.icons {
+    width: 214px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 53px;
+}
+
+.facebook {
+    @include social-icon-basic("../images/icons/ic_facebook-2.svg");
+    &:hover {
+        @include social-icon-hover-active($facebook-hover, "../images/icons/ic_facebook-1.svg");
+    }
+    &:active {
+        @include social-icon-hover-active($facebook-active, "../images/icons/ic_facebook-1.svg");
+    }
+}
+
+.instagram {
+    @include social-icon-basic("../images/icons/ic_instagram-2.svg");
+    &:hover {
+        @include social-icon-hover-active($instagram-hover, "../images/icons/ic_instagram-1.svg");
+    }
+    &:active {
+        @include social-icon-hover-active($instagram-active, "../images/icons/ic_instagram-1.svg");
+    }
+}
+
+.twitter {
+    @include social-icon-basic("../images/icons/ic_twitter-2.svg");
+    &:hover {
+        @include social-icon-hover-active($twitter-hover, "../images/icons/ic_twitter-1.svg");
+    }
+    &:active {
+        @include social-icon-hover-active($twitter-active, "../images/icons/ic_twitter-1.svg");
+    }
+}
+
+.youtube {
+    @include social-icon-basic("../images/icons/ic_youtube-2.svg");
+    &:hover {
+        @include social-icon-hover-active($youtube-hover, "../images/icons/ic_youtube-1.svg");
+    }
+    &:active {
+        @include social-icon-hover-active($youtube-active, "../images/icons/ic_youtube-1.svg");
+    }
+}
+
+iframe {
+    display: none;
+}
+
+@import "indexFullScreen";

@@ -1,0 +1,106 @@
+@import "mixins";
+@import "variables";
+
+@media all and (min-width: 770px){
+
+    html {
+        background-image: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%), url('../images/image_summer-1.png') ;
+        background-repeat: no-repeat;
+        background-position: left, 680px center;
+        background-size: 680px, auto;
+    }
+
+    .page {
+        display: block;
+    }
+
+    header {
+        height: 0;
+    }
+
+    nav {
+        position: relative;
+        margin: 95px 80px 0;
+        height: 66px;
+        width: 520px;
+        background-color: transparent;
+        background-image: url('../images/icons/logo_pineapple-1.svg');
+        background-repeat: no-repeat;
+        background-position: 20px 5px;
+    }
+
+    .menu {
+        font-size: 17px;
+        color: $grey-txt;
+        width: 250px;
+    }
+
+    .content {
+        width: 550px;
+        height: 371px;
+        background: transparent;
+        position: relative;
+        margin: 385px 80px 0;
+    }
+
+    input[type=text] {
+        width: 618px;
+        height: 68px;
+        margin: 21px 20px 34px;
+        font-size: 16px;
+        padding: 0 0 0 40px;
+    }
+
+    button {
+        top: 48px;
+        right: -94px;
+    }
+
+    #subscribe-txt-1 {
+        font-size: 24pt;
+        margin: -6px 61px 0;
+    }
+
+    #subscribe-txt-2 {
+        margin: 20px 58px 31px;
+        font-size: 12pt;
+    }
+
+    .checkbox {
+        margin: 0 40px 30px;
+    }
+
+    #content hr {
+        width: 400px;
+        margin: 21px 60px;
+    }
+
+    .icons {
+        margin: 50px 140px;
+        width: 240px;
+    }
+
+    #contentSuccess {
+        display: none;
+        width: 400px;
+        margin-left: 140px;
+        margin-top: 268px;
+        hr {
+            margin-top: 50px;
+        }
+        .icons{
+            margin: 50px 77px;
+            width: 245px;
+        }
+        #subscribe-success-1 {
+            font-size: 24pt;
+            margin: 30px 0 26px 0;
+        }
+
+        #subscribe-success-2 {
+            font-size: 16px;
+            line-height: 27px;
+            margin: 0;
+        }
+    }
+}
