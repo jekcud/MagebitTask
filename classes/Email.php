@@ -34,6 +34,7 @@ class Email extends Database
         return $this->email;
     }
 
+    // get all rows
     public function getInfo()
     {
         $this->setTable('subscribed');
@@ -42,7 +43,25 @@ class Email extends Database
         $this->setDate('date');
         $date = $this->getDate();
 
-        $sql = "SELECT * FROM " . $table . " ORDER BY " . $date . " ASC";
+        $sql = "SELECT * FROM " . $table;
+        $sql .= " ORDER BY " . $date . " ASC";
+        $stmt = $this->fetch()->query($sql);
+        return $stmt;
+    }
+
+    //get concrete number of rows as needed per page
+    public function getLimitedInfo($this_page_first_result, $results_per_page)
+    {
+        $this->setTable('subscribed');
+        $table = $this->getTable();
+
+        $this->setDate('date');
+        $date = $this->getDate();
+
+        $sql = "SELECT * FROM " . $table;
+        $sql .= " ORDER BY " . $date . " ASC ";
+        $sql .= "LIMIT " . $this_page_first_result;
+        $sql .= "," . $results_per_page;
         $stmt = $this->fetch()->query($sql);
         return $stmt;
     }
@@ -62,6 +81,16 @@ class Email extends Database
         }
     }
 
+    //count the number of rows
+    public function getNumberOfRows(){
+        $this->setTable('subscribed');
+        $table = $this->getTable();
+
+        $sql = "SELECT * FROM " . $table;
+        $stmt = $this->fetch()->query($sql);
+        return $stmt->rowCount();
+    }
+
     // add info into table
     public function insertNewEmail($data)
     {
@@ -74,7 +103,9 @@ class Email extends Database
         $this->setDate('date');
         $date = $this->getDate();
 
-        $queryText = "INSERT INTO " . $table. " (" . $date. ", " . $email . ") VALUES(:date, :email)";
+        $queryText = "INSERT INTO " . $table;
+        $queryText .= " (" . $date. ", " . $email;
+        $queryText .= ") VALUES(:date, :email)";
 
         $this->query($queryText);
 

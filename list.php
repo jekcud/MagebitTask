@@ -27,6 +27,7 @@ $providers = new Providers();
     <div id="buttons">
         <ul>
             <?php
+            // get list of radio buttons with providers
             $providerList = $providers->getProviders();
             foreach ($providerList as $provider){?>
             <li>
@@ -41,34 +42,10 @@ $providers = new Providers();
     <br>
     <button type="submit" name="search">Search</button>
     <br><br>
-    <table id="myTable" class="sortable">
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>e-mail address</th>
-        </tr>
-        </thead>
-        <tbody id="tableBody">
-        <?php
-        $search = $_GET['search'];
-        $provider = $_GET['provider'];
-        if(isset($search)){
-           $stmt = $providers->filterByProvider($provider);
-        } else {
-            $stmt = $email->getInfo();
-        }
-        while($key = $stmt->fetch()){
-            ?>
-            <tr>
-                <td><?php echo $key['date']; ?></td>
-                <td><?php echo $key['email']; ?></td>
-                <td><a href="list.php?delete=<?php echo $key['id'];?>">Delete</a></td>
-            </tr>
-            <?php
-        } ?>
-        </tbody>
-    </table>
     <?php
+    // the table
+    include 'table.php';
+    //delete rows
     $email->deleteEmail($_GET['delete']);
     if(isset($_GET['delete'])){
     header("Location: list.php");

@@ -31,7 +31,7 @@ class Providers extends Email
     }
 
     // filter by provider
-    public function filterByProvider($provider){
+    public function filterByProvider($provider, $this_page_first_result, $results_per_page){
 
         $this->setTable('subscribed');
         $table = $this->getTable();
@@ -39,9 +39,31 @@ class Providers extends Email
         $this->setEmail('email');
         $email = $this->getEmail();
 
-        $sql = "SELECT * FROM " . $table . " WHERE " . $email . " LIKE '%$provider%' ";
+        $this->setDate('date');
+        $date = $this->getDate();
+
+        $sql = "SELECT * FROM " . $table;
+        $sql .= " WHERE " . $email;
+        $sql .= " LIKE '%$provider%' ";
+        $sql .= " ORDER BY " . $date;
+        $sql .= " ASC LIMIT " . $this_page_first_result;
+        $sql .= "," . $results_per_page;
         $stmt = $this->fetch()->query($sql);
         return $stmt;
     }
 
+    // count number of rows of selected provider
+    public function getNumberOfRowsByProvider($provider){
+        $this->setTable('subscribed');
+        $table = $this->getTable();
+
+        $this->setEmail('email');
+        $email = $this->getEmail();
+
+        $sql = "SELECT * FROM " . $table;
+        $sql .= " WHERE " . $email;
+        $sql .= " LIKE '%$provider%' ";
+        $stmt = $this->fetch()->query($sql);
+        return $stmt->rowCount();
+    }
 }

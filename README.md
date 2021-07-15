@@ -13,7 +13,7 @@ This project is a finished test for Magebit company, for applying to Junior Web 
 
 ## Short description:
 
-* **index.php** and **list.php** files are main files.
+* **index.php**, **table.php** and **list.php** files are main files.
 * **subscribed.sql** MariaDB is a sql export file.
 * **classes** folder:
   * **Database.php** file is a file for Database class that contains basic properties and methods for interacting with a database.
